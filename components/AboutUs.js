@@ -2,17 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { bookingUrl, mapsUrl, socialLinks } from '@/lib/site';
 
-const bookingUrl = 'https://www.lldtek.org/salon/appt/VjBGZk1USTBNamc9';
-const mapsUrl = 'https://maps.google.com/?q=1415+S+3rd+Ave+unit+400+Yakima+WA+98902';
-const socialLinks = [
-  ['/icons/facebook.svg', 'Facebook', 'https://www.facebook.com/angelsnailandpermanentmakeup/'],
-  ['https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/instagram/default.svg', 'Instagram', 'https://www.instagram.com/angelnailspaandpermanentmakeup/'],
-  ['/icons/google-maps.svg', 'Google Maps', mapsUrl],
-];
-
-export default function AboutUs() {
+export default function AboutUs({ headingLevel = 'h2' }) {
   const root = useRef(null);
+  const Heading = headingLevel;
 
   useEffect(() => {
     const section = root.current;
@@ -39,14 +33,14 @@ export default function AboutUs() {
           <div className="absolute -left-4 -top-4 bottom-20 right-12 rounded-tl-[190px] rounded-br-[90px] border border-[#2f6f91]/20" aria-hidden="true" />
 
           <div data-about-main className="relative h-[510px] overflow-hidden rounded-tl-[180px] rounded-tr-[24px] rounded-bl-[24px] rounded-br-[78px] bg-[#e9eef0] shadow-[0_34px_80px_rgba(11,42,58,.16)] sm:h-[620px]">
-            <img src="/banner/manicure-service.jpg" alt="Manicure service at Angel Nail Spa" className="h-full w-full object-cover object-center" />
+            <img src="/banner/manicure-service.webp" alt="Manicure service at Angel Nail Spa" width="1920" height="1281" loading="lazy" className="h-full w-full object-cover object-center" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#061a3a]/20 via-transparent to-white/[.08]" />
             <div className="absolute left-7 top-8 flex items-center gap-3 rounded-full border border-white/50 bg-white/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[.2em] text-[#14384b] backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-[#2f6f91]" />Yakima, Washington</div>
           </div>
 
           <div data-about-small className="absolute bottom-0 right-0 w-[175px] sm:w-[225px]">
             <div className="relative aspect-[.74/1] overflow-hidden rounded-t-[120px] rounded-b-[24px] border-[8px] border-[#f7f4ef] bg-white shadow-[0_24px_58px_rgba(11,42,58,.2)]">
-              <img src="/banner/inset-bridal-nails.jpg" alt="Elegant bridal nail art" className="h-full w-full object-cover object-center" />
+              <img src="/banner/inset-bridal-nails.webp" alt="Elegant bridal nail art" width="1200" height="2133" loading="lazy" className="h-full w-full object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061a3a]/16 to-transparent" />
             </div>
             <div className="absolute -bottom-4 -left-7 flex h-[82px] w-[82px] items-center justify-center rounded-full border border-[#7eb6e8]/55 bg-[#f2e9d9] shadow-lg">
@@ -59,7 +53,7 @@ export default function AboutUs() {
         <div className="lg:pl-2">
           <div data-about-copy className="mb-7 flex items-center gap-5 text-[11px] font-semibold uppercase tracking-[.3em] text-[#2f6f91]"><span className="about-rule" />About the salon</div>
 
-          <h2 data-about-copy className="max-w-[620px] font-forum text-[46px] leading-[.96] text-[#153b70] sm:text-[58px] lg:text-[70px]">A softer kind of<span className="mt-2 block italic text-[#2f6f91]">self-care.</span></h2>
+          <Heading data-about-copy className="max-w-[620px] font-forum text-[46px] leading-[.96] text-[#153b70] sm:text-[58px] lg:text-[70px]">A softer kind of<span className="mt-2 block italic text-[#2f6f91]">self-care.</span></Heading>
 
           <div data-about-copy className="mt-8 max-w-[570px] space-y-4 text-[15px] leading-7 text-[#14384b]/68">
             <p>Angel Nail Spa & Permanent Makeup is a place to slow down, feel looked after, and leave with beauty that feels naturally yours.</p>
@@ -80,7 +74,7 @@ export default function AboutUs() {
             <div className="border-t border-[#2f6f91]/15 bg-white/75 p-5 sm:col-span-2">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div><span className="text-[10px] font-semibold uppercase tracking-[.22em] text-[#2f6f91]">Opening hours</span><div className="mt-2 flex flex-wrap gap-x-7 gap-y-1 font-forum text-[17px]"><span><b className="font-normal text-[#14384b]/55">Monday</b> · Closed</span><span><b className="font-normal text-[#14384b]/55">Tue – Sun</b> · 10 AM – 7 PM</span></div></div>
-                <div className="flex items-center gap-2">{socialLinks.map(([icon, label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#2f6f91]/18 bg-white transition hover:-translate-y-0.5 hover:border-[#2f6f91]/45"><img src={icon} alt="" className="h-5 w-5 object-contain" /></a>)}</div>
+                <div className="flex items-center gap-2">{socialLinks.map(([icon, label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#2f6f91]/18 bg-white transition hover:-translate-y-0.5 hover:border-[#2f6f91]/45"><img src={icon} alt="" width="20" height="20" className="h-5 w-5 object-contain" /></a>)}</div>
               </div>
             </div>
           </div>

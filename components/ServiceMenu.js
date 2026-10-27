@@ -2,17 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-
-const bookingUrl = 'https://www.lldtek.org/salon/appt/VjBGZk1USTBNamc9';
+import { bookingUrl } from '@/lib/site';
 
 const services = [
-  { id: 'pedicure', label: 'Pedicure', eyebrow: 'Signature foot care', image: '/services/pedicure.jpg', position: 'center 62%', description: 'A restorative ritual for refreshed feet, meticulous grooming, and a beautifully polished finish.' },
-  { id: 'manicure', label: 'Mani & Pedi', eyebrow: 'Essential nail care', image: '/services/manicure.jpg', position: 'center 52%', description: 'Classic color, detailed care, and thoughtfully paired manicure and pedicure experiences.' },
-  { id: 'enhancements', label: 'Nail Enhancements', eyebrow: 'Length, strength & style', image: '/services/nail-enhancements.jpg', position: 'center 46%', description: 'Long-lasting structure and refined color with full sets, fills, ombre, and color powder.' },
-  { id: 'waxing', label: 'Waxing', eyebrow: 'Smooth finishing', image: '/services/waxing.jpg', position: 'center 48%', description: 'Careful face and body waxing services created for a clean, smooth, and polished result.' },
-  { id: 'facial', label: 'Facial', eyebrow: 'Skin renewal', image: '/services/facial.jpg', position: 'center 48%', description: 'A focused one-hour beauty ritual designed to cleanse, refresh, and revive the look of skin.' },
-  { id: 'beauty', label: 'Lash · Brow · Lip', eyebrow: 'Lasting definition', image: '/services/lash-brow-lip.jpg', position: 'center 38%', description: 'Expressive lash, brow, eyeliner, and lip services tailored to frame your natural features.' },
-  { id: 'lipstyles', label: 'Lip Styles', eyebrow: 'Permanent makeup', image: '/services/lip-styles.jpg', position: 'center 46%', description: 'Five distinctive finishes to personalize the color, shape, softness, and definition of your lips.' },
+  { id: 'pedicure', label: 'Pedicure', eyebrow: 'Signature foot care', image: '/services/pedicure.webp', position: 'center 62%', description: 'A restorative ritual for refreshed feet, meticulous grooming, and a beautifully polished finish.' },
+  { id: 'manicure', label: 'Mani & Pedi', eyebrow: 'Essential nail care', image: '/services/manicure.webp', position: 'center 52%', description: 'Classic color, detailed care, and thoughtfully paired manicure and pedicure experiences.' },
+  { id: 'enhancements', label: 'Nail Enhancements', eyebrow: 'Length, strength & style', image: '/services/nail-enhancements.webp', position: 'center 46%', description: 'Long-lasting structure and refined color with full sets, fills, ombre, and color powder.' },
+  { id: 'waxing', label: 'Waxing', eyebrow: 'Smooth finishing', image: '/services/waxing.webp', position: 'center 48%', description: 'Careful face and body waxing services created for a clean, smooth, and polished result.' },
+  { id: 'facial', label: 'Facial', eyebrow: 'Skin renewal', image: '/services/facial.webp', position: 'center 48%', description: 'A focused one-hour beauty ritual designed to cleanse, refresh, and revive the look of skin.' },
+  { id: 'beauty', label: 'Lash · Brow · Lip', eyebrow: 'Lasting definition', image: '/services/lash-brow-lip.webp', position: 'center 38%', description: 'Expressive lash, brow, eyeliner, and lip services tailored to frame your natural features.' },
+  { id: 'lipstyles', label: 'Lip Styles', eyebrow: 'Permanent makeup', image: '/services/lip-styles.webp', position: 'center 46%', description: 'Five distinctive finishes to personalize the color, shape, softness, and definition of your lips.' },
 ];
 
 const pedicures = [
@@ -85,25 +84,12 @@ export default function ServiceMenu() {
 
   return (
     <section id="services" ref={root} className="relative overflow-hidden bg-[#f3eee6] pb-24 text-[#14384b] sm:pb-28 lg:pb-36">
-      <div className="hidden">
-        <div className="mx-auto grid min-h-[560px] max-w-[1400px] items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[.92fr_1.08fr] lg:px-10 lg:py-20">
-          <div data-service-reveal className="relative z-10 max-w-[620px]">
-            <div className="mb-7 flex items-center gap-5 text-[10px] font-semibold uppercase tracking-[.32em] text-[#7eb6e8]"><span className="h-px w-14 bg-gradient-to-r from-[#7eb6e8] to-transparent" />Angel Nail Spa · Yakima</div>
-            <h1 className="font-forum text-[54px] leading-[.94] sm:text-[70px] lg:text-[86px]">Our service <span className="block italic text-[#78b5d5]">collection.</span></h1>
-            <p className="mt-7 max-w-[520px] text-[15px] leading-8 text-[#f7f4ef]/62">Explore thoughtful nail care, restorative spa rituals, and lasting beauty services—each presented with clear pricing and treatment details.</p>
-            <div className="mt-9 flex items-center gap-5"><a href="#service-collection" className="inline-flex min-h-13 items-center rounded-full bg-[#f2e9d9] px-7 text-[10px] font-semibold uppercase tracking-[.18em] text-[#061a3a]">Explore services</a><span className="text-[10px] uppercase tracking-[.2em] text-[#f7f4ef]/40">7 collections</span></div>
-          </div>
-          <div data-service-reveal className="relative mx-auto h-[430px] w-full max-w-[590px] lg:mr-0">
-            <div className="absolute inset-y-0 right-0 w-[78%] overflow-hidden rounded-t-[210px] rounded-b-[28px] border border-[#7eb6e8]/40 p-2">
-              <div className="h-full overflow-hidden rounded-t-[202px] rounded-b-[22px]"><img src="/services/nail-enhancements.jpg" alt="Detailed floral nail art" className="h-full w-full object-cover object-center" /></div>
-            </div>
-            <div className="absolute bottom-5 left-0 h-[190px] w-[165px] overflow-hidden rounded-[24px] border-[7px] border-[#061a3a] bg-white shadow-2xl sm:h-[220px] sm:w-[190px]"><img src="/services/pedicure.jpg" alt="Polished spa pedicure" className="h-full w-full object-cover object-[center_60%]" /></div>
-            <div className="absolute left-[25%] top-7 flex h-24 w-24 items-center justify-center rounded-full border border-[#7eb6e8]/45 bg-[#061a3a]/88 text-center text-[9px] uppercase leading-4 tracking-[.2em] text-[#7eb6e8] backdrop-blur">Beauty<br />rituals</div>
-          </div>
-        </div>
-      </div>
-
       <div id="service-collection" className="relative mx-auto max-w-[1280px] px-5 pt-12 sm:px-8 sm:pt-14 lg:px-10 lg:pt-16">
+        <header data-service-reveal className="mx-auto mb-10 max-w-[760px] text-center sm:mb-12">
+          <p className="text-[10px] font-semibold uppercase tracking-[.3em] text-[#2868ad]">Angel Nail Spa · Yakima</p>
+          <h1 className="mt-4 font-forum text-[48px] leading-none sm:text-[62px]">Services &amp; <span className="italic text-[#2868ad]">pricing.</span></h1>
+          <p className="mx-auto mt-5 max-w-[580px] text-[14px] leading-7 text-[#14384b]/62">Explore nail care, spa rituals, and lasting beauty services with clear treatment details and pricing.</p>
+        </header>
         <div className="app-scrollbar -mx-5 flex gap-2 overflow-x-auto border-y border-[#14384b]/10 bg-white/90 px-5 py-3 shadow-[0_12px_38px_rgba(11,42,58,.08)] sm:-mx-8 sm:px-8 lg:mx-0 lg:flex-wrap lg:justify-center lg:rounded-[28px] lg:border lg:px-3">
           {services.map((item, index) => (
             <button key={item.id} type="button" onClick={() => selectService(item.id)} aria-pressed={active === item.id} className={`group shrink-0 rounded-full border px-5 py-3.5 text-[10px] font-bold uppercase tracking-[.13em] transition ${active === item.id ? 'border-[#0a2857] bg-[#0a2857] text-white shadow-[0_12px_28px_rgba(10,40,87,.24)]' : 'border-[#153b70]/20 bg-[#f7f4ef] text-[#153b70] hover:border-[#2868ad]/60 hover:bg-white hover:text-[#2868ad]'}`}><span className={`mr-2 ${active === item.id ? 'text-[#7eb6e8]' : 'text-[#2868ad]'}`}>0{index + 1}</span>{item.label}</button>
@@ -113,7 +99,7 @@ export default function ServiceMenu() {
         <article key={active} className="service-panel-enter mt-7 overflow-hidden rounded-[32px] border border-[#14384b]/10 bg-[#fbfaf8] shadow-[0_30px_90px_rgba(11,42,58,.1)] sm:rounded-[42px]">
           <div className="grid lg:grid-cols-[.9fr_1.1fr]">
             <figure className="relative min-h-[310px] overflow-hidden sm:min-h-[380px] lg:min-h-[540px]">
-              <img src={service.image} alt={`${service.label} service illustration`} style={{ objectPosition: service.position }} className="absolute inset-0 h-full w-full object-cover" />
+              <img src={service.image} alt={`${service.label} service at Angel Nail Spa`} width="1200" height="1800" loading="eager" style={{ objectPosition: service.position }} className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061a3a]/82 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-9">
                 <span className="text-[10px] font-semibold uppercase tracking-[.24em] text-white/75">Angel Nail Spa · Service 0{services.findIndex(({ id }) => id === active) + 1}</span>

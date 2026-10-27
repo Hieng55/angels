@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MorphIcon } from 'morphicons/react';
 import { useEffect, useState } from 'react';
+import { bookingUrl } from '@/lib/site';
 
-const bookingUrl = 'https://www.lldtek.org/salon/appt/VjBGZk1USTBNamc9';
 const items = [
   { label: 'Home', href: '/', icon: 'M3 10.5 12 3l9 7.5M5.5 9.5V21h13V9.5', activeIcon: 'M3 10.5 12 3l9 7.5M5.5 9.5V21h13V9.5M9 21v-7h6v7' },
   { label: 'Services', href: '/services', icon: 'M4 6h2M9 6h11M4 12h2M9 12h11M4 18h2M9 18h11', activeIcon: 'M4 5h4v4H4zM11 7h9M4 13h4v4H4zM11 15h9' },

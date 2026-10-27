@@ -77,7 +77,7 @@ export default function GalleryLightbox({ images, className = '', itemClassName 
             }}
             className={`group relative aspect-square cursor-zoom-in overflow-hidden text-left ${itemClassName}`}
           >
-            <img src={image.src} alt={image.alt} loading={index < initialEager ? 'eager' : 'lazy'} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035]" />
+            <img src={image.src} alt={image.alt} width="1200" height="1200" loading={index < initialEager ? 'eager' : 'lazy'} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035]" />
           </button>
         ))}
       </div>
@@ -111,7 +111,7 @@ export default function GalleryLightbox({ images, className = '', itemClassName 
               }}
               onPointerCancel={() => { swipeStart.current = null; }}
             >
-              <img src={images[active].src} alt={images[active].alt} draggable="false" className="max-h-[calc(100dvh-130px)] max-w-[92vw] select-none object-contain sm:max-w-[82vw]" />
+              <img src={images[active].src} alt={images[active].alt} width="1200" height="1200" draggable="false" className="max-h-[calc(100dvh-130px)] max-w-[92vw] select-none object-contain sm:max-w-[82vw]" />
             </div>
 
             <div className="flex items-center justify-center gap-3">

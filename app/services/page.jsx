@@ -2,8 +2,8 @@ import ServiceMenu from '@/components/ServiceMenu';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Services & Pricing | Angel Nail Spa',
-  description: 'Explore manicure, pedicure, nail enhancement, waxing, facial, lash, brow, and permanent makeup services at Angel Nail Spa.',
+  title: 'Services & Pricing',
+  description: 'View manicure, pedicure, nail enhancement, waxing, facial, lash, brow, lip, and permanent makeup services and pricing at Angel Nail Spa in Yakima.',
 };
 
 export default function ServicesPage() {

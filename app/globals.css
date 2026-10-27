@@ -29,6 +29,23 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #fff;
+  background: #0a2857;
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 button,
 a {
   touch-action: manipulation;
@@ -76,11 +93,6 @@ a {
 
 .font-forum {
   font-family: var(--font-forum), serif;
-}
-
-.brand-logo {
-  filter: brightness(0) saturate(100%) invert(92%) sepia(26%) saturate(546%)
-    hue-rotate(345deg) brightness(101%) contrast(89%);
 }
 
 .luxury-line {
@@ -137,8 +149,7 @@ a {
   transform: translateY(-50%) rotate(45deg);
 }
 
-.service-ornament-line,
-.service-ornament-tail {
+.service-ornament-line {
   position: relative;
   display: inline-block;
   height: 1px;
@@ -160,12 +171,6 @@ a {
   background: #78b5d5;
   box-shadow: 0 0 10px rgba(233, 197, 121, 0.45);
   transform: translateY(-50%) rotate(45deg);
-}
-
-.service-ornament-tail {
-  width: 20px;
-  background: linear-gradient(90deg, #7eb6e8, transparent);
-  opacity: 0.62;
 }
 
 .luxury-button {
@@ -222,21 +227,6 @@ a {
   border-color: #153b70;
   color: #f2e9d9;
   box-shadow: 0 14px 30px rgba(3, 18, 26, 0.22);
-}
-
-.luxury-button-secondary {
-  border: 1px solid rgba(241, 222, 168, 0.65);
-  color: #fff;
-  background: transparent;
-}
-
-.luxury-button-secondary::before {
-  background: #f2e9d9;
-}
-
-.luxury-button-secondary:hover {
-  border-color: #f2e9d9;
-  color: #153b70;
 }
 
 .hero-button {

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { MorphIcon } from 'morphicons/react';
+import { bookingUrl } from '@/lib/site';
 
 const menuIcon = 'M4 6h16M4 12h16M4 18h16';
 const closeIcon = 'M6 6l12 12M18 6 6 18';
@@ -11,8 +12,6 @@ const closeIcon = 'M6 6l12 12M18 6 6 18';
 const leftNav = [['Home', '/'], ['About us', '/about'], ['Services', '/services']];
 const rightNav = [['Gallery', '/gallery'], ['Reviews', '/reviews'], ['Contact', '/contact']];
 const navItems = [...leftNav, ...rightNav];
-const bookingUrl = 'https://www.lldtek.org/salon/appt/VjBGZk1USTBNamc9';
-
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -32,7 +31,7 @@ export default function Header() {
       <div className="mx-auto grid h-[70px] max-w-[1560px] grid-cols-[1fr_auto] items-center px-3 sm:h-[74px] sm:px-4 xl:h-[96px] xl:grid-cols-[1fr_245px_1fr] xl:px-8 2xl:px-10">
         <nav className="hidden items-center justify-end gap-7 pr-8 xl:flex 2xl:gap-10 2xl:pr-11" aria-label="Primary navigation">{leftNav.map(link)}</nav>
         <Link href="/" prefetch={false} className="relative z-[60] block h-[58px] w-[205px] justify-self-start sm:w-[220px] xl:h-[76px] xl:w-[245px] xl:justify-self-center" aria-label="Angel Nail Spa home">
-          <img src="/angel-nail-logo.png" alt="Angel's Nail Spa & Permanent Makeup" className="absolute left-1/2 top-1/2 h-auto w-[205px] max-w-none -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_4px_12px_rgba(0,0,0,.14)] sm:w-[220px] xl:w-[250px]" />
+          <img src="/angel-nail-logo.png" alt="Angel's Nail Spa & Permanent Makeup" width="742" height="183" className="absolute left-1/2 top-1/2 h-auto w-[205px] max-w-none -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_4px_12px_rgba(0,0,0,.14)] sm:w-[220px] xl:w-[250px]" />
         </Link>
         <div className="hidden items-center justify-start gap-7 pl-8 xl:flex 2xl:gap-9 2xl:pl-11">
           <nav className="flex items-center gap-7 2xl:gap-9" aria-label="Secondary navigation">{rightNav.map(link)}</nav>

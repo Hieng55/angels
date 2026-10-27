@@ -52,10 +52,10 @@ function GoogleMark() {
   );
 }
 
-export default function Gallery() {
-  const root = useRef(null);
+export default function Gallery({ headingLevel = 'h2' }) {
   const cards = useRef(null);
   const swipe = useRef(null);
+  const Heading = headingLevel;
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -87,28 +87,28 @@ export default function Gallery() {
   const visibleReviews = [0, 1, 2].map((offset) => reviews[(active + offset) % reviews.length]);
 
   return (
-    <section id="reviews" ref={root} className="relative overflow-hidden bg-white py-20 text-[#14384b] sm:py-24 lg:py-32">
+    <section id="reviews" className="relative overflow-hidden bg-white py-20 text-[#14384b] sm:py-24 lg:py-32">
       <div className="pointer-events-none absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-[#2f6f91]/20 to-transparent" />
       <div className="pointer-events-none absolute -right-48 top-10 h-[420px] w-[420px] rounded-full bg-[#78b5d5]/[.07] blur-3xl" />
       <div className="pointer-events-none absolute -left-36 bottom-0 h-[360px] w-[360px] rounded-full bg-[#7eb6e8]/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1240px] px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[760px] text-center">
-          <div data-review className="mb-6 flex items-center justify-center gap-5 text-[11px] font-semibold uppercase tracking-[.3em] text-[#2f6f91]">
+          <div className="mb-6 flex items-center justify-center gap-5 text-[11px] font-semibold uppercase tracking-[.3em] text-[#2f6f91]">
             <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#2f6f91]" />
             Customer reviews
             <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#2f6f91]" />
           </div>
-          <h2 data-review className="font-forum text-[46px] leading-[.98] sm:text-[58px] lg:text-[70px]">
+          <Heading className="font-forum text-[46px] leading-[.98] sm:text-[58px] lg:text-[70px]">
             Kind words from
             <span className="ml-2 italic text-[#2f6f91]">our guests.</span>
-          </h2>
-          <p data-review className="mx-auto mt-6 max-w-[560px] text-[14px] leading-7 text-[#14384b]/58">
+          </Heading>
+          <p className="mx-auto mt-6 max-w-[560px] text-[14px] leading-7 text-[#14384b]/58">
             A little love from the people who make our salon special.
           </p>
         </div>
 
-        <div data-review className="mx-auto mt-12 max-w-[1180px] sm:mt-16" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
+        <div className="mx-auto mt-12 max-w-[1180px] sm:mt-16" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
           <div
             ref={cards}
             className="grid touch-pan-y select-none gap-5 md:grid-cols-3"

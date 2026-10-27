@@ -3,13 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-
-const bookingUrl = 'https://www.lldtek.org/salon/appt/VjBGZk1USTBNamc9';
-const mapsUrl = 'https://maps.google.com/?q=1415+S+3rd+Ave+unit+400+Yakima+WA+98902';
+import { bookingUrl, mapsUrl, socialLinks } from '@/lib/site';
 const slides = [
-  { background: '/banner/floral-manicure.jpg', inset: '/banner/inset-floral-hands.jpg', eyebrow: 'Angel Nail Spa · Yakima', title: 'A little heaven,', accent: 'at your fingertips', description: 'A polished escape for beautiful nails, thoughtful care, and the confidence to feel like your best self.', services: 'Manicure · Pedicure · Nail Art', position: 'center center' },
-  { background: '/banner/spring-manicure-neutral.png', inset: '/banner/inset-bridal-nails.jpg', eyebrow: 'Personal Nail Artistry', title: 'Refined detail,', accent: 'made uniquely yours', description: 'From timeless polish to expressive designs, each appointment is shaped around your style.', services: 'Gel · Acrylic · Custom Design', position: 'center center' },
-  { background: '/banner/manicure-service.jpg', inset: '/banner/inset-red-floral-nails.jpg', eyebrow: 'Beauty Made Effortless', title: 'Lasting beauty,', accent: 'softly defined', description: 'Thoughtful permanent makeup enhancements designed to simplify your routine and complement your natural features.', services: 'Permanent Makeup · Beauty Care', position: 'center center' },
+  { background: '/banner/floral-manicure.webp', inset: '/banner/inset-floral-hands.webp', eyebrow: 'Angel Nail Spa · Yakima', title: 'A little heaven,', accent: 'at your fingertips', description: 'A polished escape for beautiful nails, thoughtful care, and the confidence to feel like your best self.', services: 'Manicure · Pedicure · Nail Art', position: 'center center' },
+  { background: '/banner/spring-manicure-neutral.webp', inset: '/banner/inset-bridal-nails.webp', eyebrow: 'Personal Nail Artistry', title: 'Refined detail,', accent: 'made uniquely yours', description: 'From timeless polish to expressive designs, each appointment is shaped around your style.', services: 'Gel · Acrylic · Custom Design', position: 'center center' },
+  { background: '/banner/manicure-service.webp', inset: '/banner/inset-red-floral-nails.webp', eyebrow: 'Beauty Made Effortless', title: 'Lasting beauty,', accent: 'softly defined', description: 'Thoughtful permanent makeup enhancements designed to simplify your routine and complement your natural features.', services: 'Permanent Makeup · Beauty Care', position: 'center center' },
 ];
 
 export default function Hero() {
@@ -54,7 +52,7 @@ export default function Hero() {
   const slide = slides[active];
   return (
     <section id="home" ref={root} onTouchStart={e => { touch.current = e.touches[0].clientX; }} onTouchEnd={e => { const d = e.changedTouches[0].clientX - touch.current; if (Math.abs(d) > 50) move(d < 0 ? 1 : -1); }} className="relative min-h-[820px] touch-pan-y overflow-hidden bg-[#0a2857] text-[#f2e9d9] sm:min-h-[880px] lg:min-h-screen">
-      <div className="absolute inset-0 bg-[#0a2857]">{slides.map((s, i) => <div key={s.title} ref={el => { backgrounds.current[i] = el; }} className="absolute inset-0 will-change-[clip-path]" style={{ clipPath: i === 0 ? 'circle(150% at 50% 50%)' : 'circle(0% at 50% 50%)' }}><img src={s.background} alt="" className="h-full w-full scale-[1.04] object-cover" style={{ objectPosition: s.position }} /></div>)}</div>
+      <div className="absolute inset-0 bg-[#0a2857]">{slides.map((s, i) => <div key={s.title} ref={el => { backgrounds.current[i] = el; }} className="absolute inset-0 will-change-[clip-path]" style={{ clipPath: i === 0 ? 'circle(150% at 50% 50%)' : 'circle(0% at 50% 50%)' }}><img src={s.background} alt="" width="1920" height="1280" fetchPriority={i === 0 ? 'high' : 'auto'} className="h-full w-full scale-[1.04] object-cover" style={{ objectPosition: s.position }} /></div>)}</div>
       <div className="pointer-events-none absolute inset-0 z-[3] bg-black/40" />
       <div className="relative z-10 mx-auto grid min-h-[820px] max-w-[1240px] grid-cols-1 items-center gap-10 px-5 pb-40 pt-28 sm:min-h-[880px] sm:px-8 sm:pb-44 sm:pt-32 lg:min-h-screen lg:grid-cols-[1.06fr_.94fr] lg:gap-16 lg:px-10 lg:pb-32 lg:pt-36">
         <div ref={card} className="relative max-w-[620px] overflow-hidden rounded-[28px] border border-white/35 bg-[#0e213f]/35 px-6 py-9 shadow-[0_30px_90px_rgba(5,12,24,.4)] backdrop-blur-[28px] sm:rounded-[32px] sm:px-10 sm:py-11 lg:px-12 lg:py-14">
@@ -69,13 +67,13 @@ export default function Hero() {
         <div ref={arch} className="relative mx-auto hidden h-[540px] w-full max-w-[430px] lg:block">
           <span className="absolute right-[-35px] top-[-68px] font-forum text-[170px] leading-none text-[#f2e9d9]/10">0{active + 1}</span>
           <div className="absolute inset-x-3 bottom-0 top-4 overflow-hidden rounded-t-[215px] rounded-b-[28px] border border-white/45 bg-white/[.12] p-3 shadow-[0_28px_75px_rgba(6,26,58,.34)] backdrop-blur-[18px]">
-            <div className="relative h-full overflow-hidden rounded-t-[200px] rounded-b-[20px]">{slides.map((s, i) => <div key={s.inset} ref={el => { insets.current[i] = el; }} className="absolute inset-0"><img src={s.inset} alt="" className="h-full w-full object-cover" /></div>)}<div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-[#0a2857]/28 via-transparent to-white/[.08]" /></div>
+            <div className="relative h-full overflow-hidden rounded-t-[200px] rounded-b-[20px]">{slides.map((s, i) => <div key={s.inset} ref={el => { insets.current[i] = el; }} className="absolute inset-0"><img src={s.inset} alt="" width="1200" height="1800" loading="lazy" className="h-full w-full object-cover" /></div>)}<div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-[#0a2857]/28 via-transparent to-white/[.08]" /></div>
           </div>
           <div className="absolute -bottom-2 -right-4 z-10 flex h-28 w-28 rotate-6 items-center justify-center rounded-full border border-[#7eb6e8] bg-[#f2e9d9] text-center text-[#0a2857] shadow-xl"><span className="font-forum text-[18px] leading-5">Beauty in<br />every detail</span></div>
         </div>
       </div>
 
-      <aside className="absolute right-5 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-4 xl:flex"><span className="mb-2 text-[10px] uppercase tracking-[.3em] [writing-mode:vertical-rl]">Follow</span>{[['/icons/facebook.svg','Facebook','https://www.facebook.com/angelsnailandpermanentmakeup/'],['https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/instagram/default.svg','Instagram','https://www.instagram.com/angelnailspaandpermanentmakeup/'],['/icons/google-maps.svg','Google Maps',mapsUrl]].map(([icon,label,href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#f2e9d9]/35 bg-[#f2e9d9]/90 transition hover:-translate-y-1 hover:bg-white"><img src={icon} alt="" className="h-5 w-5 object-contain" /></a>)}</aside>
+      <aside aria-label="Social links" className="absolute right-5 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-4 xl:flex"><span className="mb-2 text-[10px] uppercase tracking-[.3em] [writing-mode:vertical-rl]">Follow</span>{socialLinks.map(([icon,label,href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#f2e9d9]/35 bg-[#f2e9d9]/90 transition hover:-translate-y-1 hover:bg-white"><img src={icon} alt="" width="20" height="20" className="h-5 w-5 object-contain" /></a>)}</aside>
 
       <div className="absolute inset-x-0 bottom-24 z-20 px-5 sm:px-8 lg:bottom-8 lg:px-10"><div className="mx-auto flex max-w-[1240px] items-end justify-between gap-6">
         <a href={mapsUrl} target="_blank" rel="noopener noreferrer" data-hero-bottom className="liquid-glass liquid-glass-light hidden max-w-[440px] items-center rounded-[28px] px-7 py-3.5 text-[#0e213f] sm:flex"><div className="relative z-[1]"><p className="font-forum text-[23px] leading-none">Angel Nail Spa</p><p className="mt-1.5 text-[12px] leading-4 text-[#2868ad]">1415 S 3rd Ave, Unit 400 · Yakima, WA</p></div></a>
