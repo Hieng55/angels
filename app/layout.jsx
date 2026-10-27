@@ -23,6 +23,9 @@ export const metadata = {
   formatDetection: { email: false, address: false, telephone: false },
   robots: { index: true, follow: true },
   icons: { icon: '/angel-nail-logo.png', shortcut: '/angel-nail-logo.png' },
+  verification: {
+    google: 'luWEqWsvC7fibTfXmLmcwNhG2Y1M2TxqmrWzIeYBBDg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
