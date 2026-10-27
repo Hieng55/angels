@@ -1,0 +1,7 @@
+:HL["/_next/static/chunks/2-b009rpe17n2.css","style"]
+:HL["/_next/static/media/78eb2d37ccba2007-s.p.2csanl8cs02r-.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/89dd8faa142ca875-s.p.2hcl1-0_mkckx.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/angel-nail-logo.png","image"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"contact","h":96,"c":"$Q2"}]]
+0:{"b":"tmug7kdn1sQPPuhIkFW7k","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
