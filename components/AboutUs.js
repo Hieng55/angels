@@ -1,0 +1,96 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+
+const bookingUrl = 'https://www.lldtek.org/salon/appt/VjBGZk1USTBNamc9';
+const mapsUrl = 'https://maps.google.com/?q=1415+S+3rd+Ave+unit+400+Yakima+WA+98902';
+const socialLinks = [
+  ['/icons/facebook.svg', 'Facebook', 'https://www.facebook.com/angelsnailandpermanentmakeup/'],
+  ['https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/instagram/default.svg', 'Instagram', 'https://www.instagram.com/angelnailspaandpermanentmakeup/'],
+  ['/icons/google-maps.svg', 'Google Maps', mapsUrl],
+];
+
+export default function AboutUs() {
+  const root = useRef(null);
+
+  useEffect(() => {
+    const section = root.current;
+    if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .from(section.querySelector('[data-about-main]'), { x: -28, opacity: 0, duration: .85 })
+        .from(section.querySelector('[data-about-small]'), { y: 24, opacity: 0, duration: .7 }, '-=.5')
+        .from(section.querySelectorAll('[data-about-copy]'), { y: 18, opacity: 0, duration: .58, stagger: .07 }, '-=.55');
+      observer.disconnect();
+    }, { threshold: .14 });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="about" ref={root} className="relative overflow-hidden bg-[#f7f4ef] py-20 text-[#14384b] sm:py-24 lg:py-32">
+      <div className="pointer-events-none absolute -left-28 top-1/3 h-96 w-96 rounded-full bg-[#78b5d5]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-36 top-10 h-[430px] w-[430px] rounded-full bg-[#7eb6e8]/10 blur-[130px]" />
+
+      <div className="relative mx-auto grid max-w-[1240px] items-center gap-16 px-5 sm:px-8 lg:grid-cols-[.96fr_1.04fr] lg:gap-24 lg:px-10">
+        <div className="relative pb-24 pr-8 sm:pb-28 sm:pr-16 lg:pb-20">
+          <div className="absolute -left-4 -top-4 bottom-20 right-12 rounded-tl-[190px] rounded-br-[90px] border border-[#2f6f91]/20" aria-hidden="true" />
+
+          <div data-about-main className="relative h-[510px] overflow-hidden rounded-tl-[180px] rounded-tr-[24px] rounded-bl-[24px] rounded-br-[78px] bg-[#e9eef0] shadow-[0_34px_80px_rgba(11,42,58,.16)] sm:h-[620px]">
+            <img src="/banner/manicure-service.jpg" alt="Manicure service at Angel Nail Spa" className="h-full w-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#061a3a]/20 via-transparent to-white/[.08]" />
+            <div className="absolute left-7 top-8 flex items-center gap-3 rounded-full border border-white/50 bg-white/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[.2em] text-[#14384b] backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-[#2f6f91]" />Yakima, Washington</div>
+          </div>
+
+          <div data-about-small className="absolute bottom-0 right-0 w-[175px] sm:w-[225px]">
+            <div className="relative aspect-[.74/1] overflow-hidden rounded-t-[120px] rounded-b-[24px] border-[8px] border-[#f7f4ef] bg-white shadow-[0_24px_58px_rgba(11,42,58,.2)]">
+              <img src="/banner/inset-bridal-nails.jpg" alt="Elegant bridal nail art" className="h-full w-full object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#061a3a]/16 to-transparent" />
+            </div>
+            <div className="absolute -bottom-4 -left-7 flex h-[82px] w-[82px] items-center justify-center rounded-full border border-[#7eb6e8]/55 bg-[#f2e9d9] shadow-lg">
+              <span className="text-center font-forum text-[16px] leading-5 text-[#14384b]">Made with<br /><em>care</em></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="lg:pl-2">
+          <div data-about-copy className="mb-7 flex items-center gap-5 text-[11px] font-semibold uppercase tracking-[.3em] text-[#2f6f91]"><span className="about-rule" />About the salon</div>
+
+          <h2 data-about-copy className="max-w-[620px] font-forum text-[46px] leading-[.96] text-[#153b70] sm:text-[58px] lg:text-[70px]">A softer kind of<span className="mt-2 block italic text-[#2f6f91]">self-care.</span></h2>
+
+          <div data-about-copy className="mt-8 max-w-[570px] space-y-4 text-[15px] leading-7 text-[#14384b]/68">
+            <p>Angel Nail Spa & Permanent Makeup is a place to slow down, feel looked after, and leave with beauty that feels naturally yours.</p>
+            <p>From beautifully finished nails to lasting beauty enhancements, every appointment is approached with patience, precision, and genuine care.</p>
+          </div>
+
+          <div data-about-copy className="mt-9 grid overflow-hidden rounded-[24px] border border-[#2f6f91]/15 bg-[#2f6f91]/15 sm:grid-cols-2">
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="group bg-white/75 p-5 transition hover:bg-white sm:border-r sm:border-[#2f6f91]/15">
+              <span className="text-[10px] font-semibold uppercase tracking-[.22em] text-[#2f6f91]">Visit us</span>
+              <address className="mt-2 font-forum text-[19px] not-italic leading-7 text-[#14384b]">1415 S 3rd Ave, Unit 400<br />Yakima, WA 98902</address>
+              <span className="mt-3 inline-flex text-[10px] font-semibold uppercase tracking-[.16em] text-[#2f6f91]">Get directions ↗</span>
+            </a>
+            <a href="tel:+15093172391" className="group border-t border-[#2f6f91]/15 bg-white/75 p-5 transition hover:bg-white sm:border-t-0">
+              <span className="text-[10px] font-semibold uppercase tracking-[.22em] text-[#2f6f91]">Call us</span>
+              <span className="mt-2 block font-forum text-[25px] text-[#14384b]">(509) 317-2391</span>
+              <span className="mt-3 inline-flex text-[10px] font-semibold uppercase tracking-[.16em] text-[#2f6f91]">Tap to call →</span>
+            </a>
+            <div className="border-t border-[#2f6f91]/15 bg-white/75 p-5 sm:col-span-2">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div><span className="text-[10px] font-semibold uppercase tracking-[.22em] text-[#2f6f91]">Opening hours</span><div className="mt-2 flex flex-wrap gap-x-7 gap-y-1 font-forum text-[17px]"><span><b className="font-normal text-[#14384b]/55">Monday</b> · Closed</span><span><b className="font-normal text-[#14384b]/55">Tue – Sun</b> · 10 AM – 7 PM</span></div></div>
+                <div className="flex items-center gap-2">{socialLinks.map(([icon, label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#2f6f91]/18 bg-white transition hover:-translate-y-0.5 hover:border-[#2f6f91]/45"><img src={icon} alt="" className="h-5 w-5 object-contain" /></a>)}</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-about-copy className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-center">
+            <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="luxury-button about-book-button group w-full sm:w-auto"><span className="relative z-10">Book now</span><span className="about-book-button-icon relative z-10">↗</span></a>
+            <span className="text-[10px] font-semibold uppercase tracking-[.2em] text-[#2f6f91]">Facebook · Instagram · Google Maps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
